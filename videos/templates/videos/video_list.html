@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: inline-block;
+            vertical-align: top;
+            width: 200px;
+            box-sizing: border-box;
+        }
+        
+        .card img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Videa</h1>
+
+<form method="get">
+    <input type="text" name="title">
+    <input type="submit" value="Filtrovat">
+    <button type="button" onclick="window.location.href='{{ request.path }}'">Reset</button>
+</form>
+
+{% for video in videos %}
+    <div class="card">
+        <h2>{{ video.title }}</h2>
+        <img src="{{ video.icon_uri }}" alt="{{ video.title }}">
+        <p>{{ video.description }}</p>
+    </div>
+{% endfor %}
+</body>
+</html>
